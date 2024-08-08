@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:islamicroute/app_theme.dart';
 import 'package:islamicroute/tabs/quran/sura_detials.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class quranTab extends StatelessWidget {
 List<String>suraNames=["الفاتحه","البقرة","آل عمران","النساء","المائدة","الأنعام","الأعراف","الأنفال","التوبة","يونس","هود"
 ,"يوسف","الرعد","إبراهيم","الحجر","النحل","الإسراء","الكهف","مريم","طه","الأنبياء","الحج","المؤمنون"
@@ -43,7 +43,7 @@ List<String>suraNames=["الفاتحه","البقرة","آل عمران","الن
 
                 },
                 child: Text(suraNames[index],textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineSmall,),
+                  style: Theme.of(context).textTheme.titleLarge,),
               );
             }),
           )

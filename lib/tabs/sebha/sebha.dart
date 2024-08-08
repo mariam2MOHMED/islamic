@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:islamicroute/app_theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class sebhaTab extends StatefulWidget {
 
   @override
@@ -10,17 +10,18 @@ class sebhaTab extends StatefulWidget {
 }
 
 class _sebhaTabState extends State<sebhaTab> {
-  List<String>azkar=[
-    "سبحان الله",
-    "الحمد الله",
-"لا اله الا الله",
-    "الله اكبر"
-  ];
+
   double angle=0;
   int index=0;
   int cnt=0;
   @override
   Widget build(BuildContext context) {
+    List<String>azkar=[
+      AppLocalizations.of(context)!.praiseGod,
+      AppLocalizations.of(context)!.thankGod,
+      AppLocalizations.of(context)!.noGodexceptAllah,
+      AppLocalizations.of(context)!.allahisthegreatest
+    ];
     return Column(
 // crossAxisAlignment: CrossAxisAlignment.stretch,
 children: [
@@ -45,7 +46,7 @@ angle:angle,
       ],
     ),
   ),
-  Text("عدد التسبيحات",style: Theme.of(context).textTheme.titleLarge,
+  Text(AppLocalizations.of(context)!.numberofTasbeehs,style: Theme.of(context).textTheme.titleLarge,
     textAlign: TextAlign.center,),
   SizedBox(height: 20.0,),
   Padding(
@@ -73,17 +74,13 @@ angle:angle,
 
 
       }, child: Text("${azkar[index]}",
-    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-    color: AppTheme.white,
-    fontSize: 25.0,
-    fontFamily: "Inter"
-  ),))
+    style: Theme.of(context).textTheme.titleLarge,))
 ],
     );
   }
   onClickazkar(){
     cnt++;
-    if(cnt==33){
+    if(cnt==34){
       index++;
       cnt=0;
 

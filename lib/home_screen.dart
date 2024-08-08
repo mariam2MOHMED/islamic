@@ -4,8 +4,10 @@ import 'package:islamicroute/tabs/hadeth/hadeth.dart';
 import 'package:islamicroute/tabs/quran/quran_tab.dart';
 import 'package:islamicroute/tabs/radio/radio.dart';
 import 'package:islamicroute/tabs/sebha/sebha.dart';
-import 'package:islamicroute/tabs/setting/setting.dart';
-
+import 'package:islamicroute/tabs/setting/seting.dart';
+import 'package:islamicroute/tabs/setting/setting_class.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HomeScreen extends StatefulWidget {
   static const String routeName="/home";
    HomeScreen({super.key});
@@ -25,15 +27,16 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-
+SettingProvider settingProvider=Provider.of<SettingProvider>(context);
     return Container(
       decoration: BoxDecoration(
-     image: DecorationImage(image: AssetImage('assests/bg3.png',)
+     image: DecorationImage(image: AssetImage(settingProvider.themeMode==ThemeMode.light?
+     'assests/bg3.png':  'assests/bgdark.png',)
          ,fit: BoxFit.fill)
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("اسلامى"),
+          title: Text(AppLocalizations.of(context)!.islamic),
         ),
         backgroundColor: Colors.transparent,
         bottomNavigationBar: BottomNavigationBar(
@@ -48,17 +51,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
           },
           items: [
-            BottomNavigationBarItem(icon: ImageIcon(AssetImage("assests/radio_icn.png"),),
-                label: 'Radio'),
+            BottomNavigationBarItem(icon:
+            ImageIcon(AssetImage("assests/radio_icn.png"),),
+                label: AppLocalizations.of(context)!.radio),
 
-            BottomNavigationBarItem(icon: ImageIcon(AssetImage("assests/sebha_icn.png")),
-                label: 'Sebha'),
+            BottomNavigationBarItem(icon:
+            ImageIcon(AssetImage("assests/sebha_icn.png")),
+                label: AppLocalizations.of(context)!.sebha),
             BottomNavigationBarItem(icon: ImageIcon(AssetImage("assests/hadeth_icn.png")),
-                label: 'Hadeth'),
+                label: AppLocalizations.of(context)!.hadeth),
             BottomNavigationBarItem(icon: ImageIcon(AssetImage("assests/quran_icn.png")),
-                label: 'Quran'),
+                label: AppLocalizations.of(context)!.quran),
             BottomNavigationBarItem(icon:Icon(Icons.settings),
-                label: 'Setting'),
+                label: AppLocalizations.of(context)!.setting),
           ],
         ),
         body: tabs[currindex],

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:islamicroute/app_theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class radioTab extends StatelessWidget {
 
   @override
@@ -15,7 +15,7 @@ class radioTab extends StatelessWidget {
         children: [
           Image.asset('assests/radio_header.png'),
           SizedBox(height: 24.0,),
-          Text("إذاعة القرآن الكريم",style:
+          Text(AppLocalizations.of(context)!.radioqurankareem,style:
           Theme.of(context).textTheme.titleLarge!.copyWith(
             fontFamily: "El Messiri",
             fontWeight: FontWeight.w700

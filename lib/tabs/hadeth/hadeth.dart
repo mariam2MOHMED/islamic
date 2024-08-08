@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:islamicroute/tabs/hadeth/hadet_class.dart';
 import 'package:islamicroute/tabs/hadeth/hadeth_detials.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class headthTab extends StatefulWidget {
   @override
@@ -32,7 +33,7 @@ class _headthTabState extends State<headthTab> {
                 arguments: hadeths[index],
                 );
               },
-              child: Text("${hadeths[index].title}",textAlign: TextAlign.center,style: Theme.of(context).textTheme.headlineSmall,
+              child: Text("${hadeths[index].title}",textAlign: TextAlign.center,style: Theme.of(context).textTheme.titleLarge,
               ),
             );
           },

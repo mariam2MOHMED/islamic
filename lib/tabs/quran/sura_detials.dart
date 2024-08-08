@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islamicroute/app_theme.dart';
 import 'package:islamicroute/tabs/quran/quran_tab.dart';
+import 'package:islamicroute/tabs/setting/setting_class.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class suraDetials extends StatefulWidget {
   static  String routeName='/suraDetials';
 
@@ -18,11 +22,13 @@ List<String> ayat=[
 
   @override
   Widget build(BuildContext context) {
+    SettingProvider settingProvider=Provider.of<SettingProvider>(context);
      arg=  ModalRoute.of(context)!.settings!.arguments as SuraDetailsArg;
      if(ayat.isEmpty)  loadSuraFile();
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('assests/bg3.png'),
+        image: DecorationImage(image: AssetImage(settingProvider.themeMode==ThemeMode.light?
+        'assests/bg3.png': 'assests/bgdark.png'),
             fit: BoxFit.fill)
       ),
       child: Scaffold(
@@ -36,16 +42,16 @@ List<String> ayat=[
             horizontal: MediaQuery.of(context).size.width*0.07,
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: settingProvider.themeMode==ThemeMode.light?Colors.white:AppTheme.darkPrimary,
 borderRadius: BorderRadius.circular(25.0),
 
           ),
           child:ayat.isEmpty?Center(child: CircularProgressIndicator(
-            color: Theme.of(context).primaryColor,
+            color: settingProvider.themeMode==ThemeMode.light?AppTheme.lightPrimary:AppTheme.gold,
           )): ListView.builder(itemBuilder: (context,index){
             return Text("${ayat[index]}",
                 textAlign: TextAlign.center
-                ,style: Theme.of(context).textTheme.titleLarge,);
+                ,style: Theme.of(context).textTheme.headlineSmall,);
           },
           itemCount: ayat.length,
           ),
